@@ -1,8 +1,6 @@
 package burp;
 
 import java.awt.Component;
-import java.io.BufferedReader;
-import java.io.StringReader;
 
 public class BurpExtender implements IBurpExtender, IMessageEditorTabFactory, ITab
 {
@@ -87,10 +85,15 @@ public class BurpExtender implements IBurpExtender, IMessageEditorTabFactory, IT
             {
                 String mess = helpers.bytesToString(content);
                 String lines[] = tab.replacements.split("\\r?\\n");
-                String[] split;
+                String name;
+                String value;
+                int split;
                 for (String line : lines){
-                    split = line.split("\\s+");
-                    mess = mess.replace(split[0],split[1]);
+                    split = line.indexOf(' ');
+                    if (split == -1) { continue;}
+                    name = line.substring(0, split);
+                    value = line.substring(split + 1);
+                    mess = mess.replace(name,value);
                 }
 
 
