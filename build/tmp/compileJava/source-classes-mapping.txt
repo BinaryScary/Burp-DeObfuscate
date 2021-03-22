@@ -1,0 +1,6 @@
+burp/BurpTab.java
+ burp.BurpTab
+ burp.BurpTab$1
+burp/BurpExtender.java
+ burp.BurpExtender
+ burp.BurpExtender$DeObfuscateTab
